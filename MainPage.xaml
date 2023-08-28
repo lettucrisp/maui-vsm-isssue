@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="maui_vsm_issue.MainPage">
+
+    <ContentPage.Resources>
+        <Style x:Key="Style1" TargetType="Border">
+            <Setter Property="BackgroundColor" Value="Red"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout
+        Spacing="50"
+        VerticalOptions="Center">
+
+        <VerticalStackLayout>
+            <Label
+                Text="PointerOver"
+                HorizontalOptions="Center"/>
+
+            <Border
+                WidthRequest="100"
+                HeightRequest="100">
+
+                <Label
+                    x:Name="Label1"
+                    Text="Label"/>
+
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState Name="Normal"/>
+                        <VisualState Name="PointerOver">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="Green"/>
+                                <Setter TargetName="Label1" Property="Label.TextColor" Value="Blue"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </Border>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <Label
+                Text="PointerOver with BackgroundColor"
+                HorizontalOptions="Center"/>
+
+            <!-- BackgroundColor is not changed if the mouse pointer hovers over the Border -->
+            <Border
+                WidthRequest="100"
+                HeightRequest="100"
+                BackgroundColor="Red">
+
+                <Label
+                    x:Name="Label2"
+                    Text="Label"
+                    TextColor="White"/>
+
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState Name="Normal"/>
+                        <VisualState Name="PointerOver">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="Green"/>
+                                <Setter TargetName="Label2" Property="Label.TextColor" Value="Blue"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </Border>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <Label
+                Text="PointerOver with BackgroundColor (Style)"
+                HorizontalOptions="Center"/>
+
+            <!-- BackgroundColor is not changed if the mouse pointer hovers over the Border -->
+            <Border
+                WidthRequest="100"
+                HeightRequest="100"
+                Style="{StaticResource Style1}">
+
+                <Label
+                    x:Name="Label3"
+                    Text="Label"
+                    TextColor="White"/>
+
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState Name="Normal"/>
+                        <VisualState Name="PointerOver">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="Green"/>
+                                <Setter TargetName="Label3" Property="Label.TextColor" Value="Blue"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </Border>
+        </VerticalStackLayout>
+
+        <!-- FontSize is not changed if the Entry gains focus -->
+        <!-- This is an example from https://learn.microsoft.com/en-us/dotnet/maui/user-interface/visual-states#define-visual-states-on-a-view -->
+        <Entry FontSize="18">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="Lime" />
+                        </VisualState.Setters>
+                    </VisualState>
+
+                    <VisualState x:Name="Focused">
+                        <VisualState.Setters>
+                            <Setter Property="FontSize" Value="36" />
+                        </VisualState.Setters>
+                    </VisualState>
+
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="Pink" />
+                        </VisualState.Setters>
+                    </VisualState>
+
+                    <VisualState x:Name="PointerOver">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="LightBlue" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Entry>
+    </VerticalStackLayout>
+</ContentPage>
